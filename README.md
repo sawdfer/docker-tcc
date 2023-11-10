@@ -12,32 +12,41 @@ npm install
 
 Com isso instalamos as dependências Node que precisamos.
 
-### Construindo as imagens
-
-Acesse a pasta raíz do projeto e construa cada imagem (MySQL, Node API e PHP):
+### Estruturando o DATABASE
+Acesse a pasta raíz do projeto e construa a imagem:
 
 ```
 docker build -t mysql-system -f api/db/Dockerfile .
 ```
-```
-docker build -t node-system -f api/Dockerfile .
-```
-```
-docker build -t php-system -f website/Dockerfile .
-```
-
-### Rodando os containers
-Na pasta raíz do projeto, execute um de cada vez:
+Após a imagem criada execute o container:
 
 ```
 docker run -d -v "$(pwd)/api/db/data:/var/lib/mysql" --rm --name mysql-container mysql-system
 ```
-```
+Obs.: O container do 'mysql' é o unico que usará volume para a persistência dos dados.
 
+### Estruturando o API
+Acesse a pasta raíz do projeto e construa a imagem:
+
+```
+docker build -t node-system -f api/Dockerfile .
+```
+Após a imagem criada execute o container:
+
+```
 docker run -d -p 9001:9001 --link mysql-container --rm --name node-container node-system
 ```
+
+### Estruturando o WEBSITE
+Acesse a pasta raíz do projeto e construa a imagem:
+
 ```
-docker run -d -v "$(pwd)/website:/var/www/html" -p 8888:80 --link node-container --rm --name php-container php-system
+docker build -t php-system -f website/Dockerfile .
+```
+Após a imagem criada execute o container:
+
+```
+docker run -d -p 8888:80 --link node-container --rm --name php-container php-system
 ```
 
 ### Manipulando os dados
