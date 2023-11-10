@@ -46,7 +46,7 @@ docker build -t php-system -f website/Dockerfile .
 Após a imagem criada execute o container:
 
 ```
-docker run -d -p 8888:80 --link node-container --rm --name php-container php-system
+docker run -d -p 8001:80 --link node-container --rm --name php-container php-system
 ```
 
 ### Manipulando os dados
