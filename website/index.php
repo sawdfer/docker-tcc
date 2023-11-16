@@ -19,7 +19,7 @@
                 <tr>
                     <th><span style="color: Orange; font-size: 20px;"> Placa </span></th>
                     <th><span style="color: Orange; font-size: 20px;"> Chegada </span></th>
-                    <th><span style="color: Orange; font-size: 20px;"> Status</span></th>
+                    <th><span style="color: Orange; font-size: 20px;"> Status </span></th>
                 </tr>
             </thead>
         <tbody>
